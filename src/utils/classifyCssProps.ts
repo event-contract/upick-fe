@@ -1,12 +1,12 @@
 import * as Styles from 'styled-system';
 
 const cssProperties = Object.values(Styles).map(
-  (prop: {propNames:Array<string>}) => {
+  (prop: any) => {
     if (prop.propNames) {
       return prop.propNames;
     }
   }
-).reduce((acc, val) => {
+).reduce((acc: any, val) => {
   if (val) {
     return acc.concat(val);
   }
@@ -16,8 +16,7 @@ const cssProperties = Object.values(Styles).map(
   'boxSizing'  
 );
 
-export default function classifyCssProps(props) {
-  console.log(cssProperties)
+export default function classifyCssProps(props: any) {
   const filteredKeys = Object.keys(props).filter(
     prop => cssProperties.includes(prop)
   );
