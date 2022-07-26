@@ -5,7 +5,9 @@ import RouterButton from "./RouterButton";
 export default function Header() {
   return (
     <Box
+      as="nav"
       padding="2rem 4rem"
+      position="relative"
       display="flex"
       background={colors.white}
       width="100%"

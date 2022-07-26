@@ -1,7 +1,7 @@
 import React from "react";
 import Box from "./Box";
 
-function Button({ onClick, ...props}, ref) {
+function Button({ onClick, ...props}: { onClick: () => void }, ref: any) {
   return (
     <Box 
       as="button" 
