@@ -46,6 +46,8 @@ export default function Container({
     >
       <Text 
         as="h2" 
+        margin="0 auto"
+        maxWidth="1200px"
         fontSize="46px" 
         lineHeight="1.7" 
         textAlign={titleAlign}

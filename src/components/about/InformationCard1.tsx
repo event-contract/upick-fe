@@ -69,7 +69,7 @@ export default function InformationCard1({
       />
       <Box marginLeft="auto" marginTop="auto" paddingTop="1.5rem" width="50%" height="50%">
         <Img
-          alt="card image"
+          alt={title}
           src={image}
           layout="responsive"
           borderRadius="999px"
