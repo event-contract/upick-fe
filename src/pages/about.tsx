@@ -3,6 +3,8 @@ import Head from 'next/head';
 import styled from '@emotion/styled';
 import Header from '../components/common/Header';
 import Container from '../components/about/Container';
+import InformationCard1 from '../components/about/InformationCard1';
+import Box from '../components/core/Box';
 
 const PageLayout = styled.div`
   padding: 0;
@@ -28,6 +30,34 @@ const MainPage = () => {
           titleAlign='center'
           colorSet='main'
         ></Container>
+      <Container title={`내 의견이 이제는 자산이 되는 기회\nUPICK에서 의견을 주식처럼 거래하세요`}>
+        <Box display="flex" flexWrap="wrap" justifyContent="center">
+          <InformationCard1
+            title={`YES/NO로 결과를\n예측하세요!`}
+            content={`내가 관심있는 주제에 대해서 일어날\n가능성을 예측하고 원하는 가격으로\nYES 혹은 NO 주문을 넣을 수 있습니다`}
+            image="/image"
+          />
+          <InformationCard1
+            title={`현재가로 YES/NO\n포지션을 매수하세요!`}
+            content={`오더북에서 사람들이 제시한 가격을 보고\n즉시 YES/NO 포지션을 매수할 수 있습니다`}
+            image="/image"
+            colorSet='main'
+          />
+        </Box>
+        <Box display="flex" flexWrap="wrap" justifyContent="center">
+          <InformationCard1
+            title={`내가 매수한 포지션을\n매도하세요!`}
+            content={`내가 예측한 사건이 일어나기 전에 포지션 가격이 상승한다면 포지션을 매도해서 수익을 얻을 수 있습니다!\n가격이 하락한다면 매도해서 손실을 최소화할 수도 있어요! :)`}
+            image="/image"
+            colorSet='main'
+          />
+          <InformationCard1
+            title={`내 예측으로\n수익을 얻으세요!`}
+            content={`해당 사건이 일어날 때까지 내 포지션을 보유한다면\n보유한 포지션 당 1000원의 수익을 얻을 수 있어요!`}
+            image="/image"
+          />
+        </Box>
+      </Container>
       </PageLayout>
     </>
   );
