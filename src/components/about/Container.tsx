@@ -38,7 +38,7 @@ export default function Container({
 }: Props) {
   return (
     <Box
-      padding="8.75rem"
+      padding="8.75rem 0"
       width="100%"
       background={getColors(colorSet).background}
       color={getColors(colorSet).text}
@@ -47,6 +47,7 @@ export default function Container({
       <Text 
         as="h2" 
         margin="0 auto"
+        padding="0 8.75rem"
         maxWidth="1200px"
         fontSize="46px" 
         lineHeight="1.7" 
