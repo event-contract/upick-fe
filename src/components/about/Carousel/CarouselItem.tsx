@@ -9,7 +9,7 @@ export default function CarouselItem({ content, name }: { content: string; name:
       display="flex"
       flexDirection="column"
       width="350px"
-      height="450px"
+      height="100%"
       borderRadius="19px"
       boxSizing="border-box"
       background={colors.white}

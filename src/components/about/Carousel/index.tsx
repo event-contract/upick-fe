@@ -1,14 +1,14 @@
 import styled from "@emotion/styled";
 import { useEffect, useState } from "react";
-import { colors } from "~/src/configs/colors";
+import checkIsMobile from "~/src/utils/isMobile";
 import Box from "../../core/Box";
-import Img from "../../core/Img";
 import CarouselItem from "./CarouselItem";
 import JumpButton from "./JumpButton";
 
 const CarouselWrapper = styled(Box)`
   position: relative;
   width: 100%;
+  height: 600px;
   overflow: scroll;
   ::-webkit-scrollbar {
     display: none;
@@ -16,9 +16,14 @@ const CarouselWrapper = styled(Box)`
 `;
 
 const InnerSlider = styled(Box)`
+  position: absolute;
+  top: 50%;
+  left: 0;
   display: flex;
   flex-wrap: nowrap;
   width: fit-content;
+  height: 450px;
+  transform: translateY(-50%);
 `;
 
 export default function Carousel({ data }: {
@@ -26,10 +31,12 @@ export default function Carousel({ data }: {
 }) {
   const [isMouseDown, setMouseDown] = useState(false);
   const [initialX, setInitialX] = useState(0);
+  const [see, seesseee] = useState('');
 
   useEffect(() => {
     let carousel: any = document.querySelector('.carousel');
     function mouseDown(e: any) {
+      carousel.style.transition="none";
       carousel.style.cursor = "grabbing";
       setMouseDown(true);
       setInitialX(e.clientX - carousel.offsetLeft);
@@ -47,19 +54,19 @@ export default function Carousel({ data }: {
       setInitialX(0);
     }
     function checkBoundary() {
-      const left = parseInt(carousel.style.marginLeft, 10);
+      const left = parseInt(carousel.style.left, 10);
       if (left > 0) {
-        carousel.style.marginLeft = "0px";
+        carousel.style.left = "0px";
       }
       if (left < window.innerWidth - carousel.clientWidth) {
-        carousel.style.marginLeft = `${window.innerWidth - carousel.clientWidth}px`;
+        carousel.style.left = `${window.innerWidth - carousel.clientWidth}px`;
       }
     }
     function mouseMove(e: any) {
       if (!isMouseDown) return;
       e.preventDefault();
       const x = e.clientX;
-      carousel.style.marginLeft = `${x - initialX}px`;
+      carousel.style.left = `${x - initialX}px`;
       checkBoundary();
     }
 
@@ -80,7 +87,8 @@ export default function Carousel({ data }: {
 
   return (
     <Box position="relative">
-      <CarouselWrapper>
+      <p>{see}</p>
+      <CarouselWrapper className="carousel_wrapper">
         <InnerSlider className="carousel">
           {data.map((a, idx) => (
             <Box key={`${a.name}_${idx}`} paddingLeft={idx === 0 ? "8rem" : "3rem"} paddingRight={idx < data.length - 1 ? "0" : "8rem"}>
@@ -96,15 +104,27 @@ export default function Carousel({ data }: {
       <JumpButton 
         direction="left" 
         onClick={() => {
+          let carouselWrapper: any = document.querySelector('.carousel_wrapper');
           let carousel: any = document.querySelector('.carousel');
-          carousel.style.marginLeft = "0px";
+          if (checkIsMobile()) {
+            carouselWrapper.scroll({ left: 0, behavior: 'smooth' });
+            return;
+          }
+          carousel.style.transition="0.5s";
+          carousel.style.left = "0px";
         }}
       />
       <JumpButton 
         direction="right" 
         onClick={() => {
+          let carouselWrapper: any = document.querySelector('.carousel_wrapper');
           let carousel: any = document.querySelector('.carousel');
-          carousel.style.marginLeft = `${window.innerWidth - carousel.clientWidth}px`;
+          if (checkIsMobile()) {
+            carouselWrapper.scroll({ left: carousel.clientWidth, behavior: 'smooth' });
+            return;
+          }
+          carousel.style.transition="0.5s";
+          carousel.style.left = `${window.innerWidth - carousel.clientWidth}px`;
         }}
       />
     </Box>
