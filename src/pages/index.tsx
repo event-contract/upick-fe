@@ -17,10 +17,10 @@ const MainPage = () => {
   return (
     <>
       <Head>
-        <title>event</title>
+        <title>UPick</title>
       </Head>
       <Container>
-        <h1>Zn, J.J, wooFe</h1>
+        <h1>UPick</h1>
       </Container>
     </>
   );
