@@ -7,7 +7,7 @@ type Props = {
   title: string;
   children?: any;
   titleAlign?: string;
-  colorSet?: string;
+  colorSet?: 'normal'|'main'|'white';
 };
 
 const getColors = (type: string) => {
