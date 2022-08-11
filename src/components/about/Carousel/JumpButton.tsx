@@ -3,7 +3,7 @@ import Box from "../../core/Box";
 import Img from "../../core/Img";
 
 type Props = {
-  direction: string;
+  direction: "left"|"right";
   onClick: () => void;
 }
 
