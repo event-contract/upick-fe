@@ -29,29 +29,32 @@ const InnerSlider = styled(Box)`
 export default function Carousel({ data }: {
   data: Array<{ content: string; name: string; }>
 }) {
-  const [isMouseDown, setMouseDown] = useState(false);
-  const [initialX, setInitialX] = useState(0);
+  // const [isMouseDown, setMouseDown] = useState(false);
+  // const [initialX, setInitialX] = useState(0);
   const [see, seesseee] = useState('');
 
   useEffect(() => {
+    let carouselWrapper: any = document.querySelector('.carousel_wrapper');
     let carousel: any = document.querySelector('.carousel');
+    let isMouseDown = false;
+    let initialX = 0;
     function mouseDown(e: any) {
       carousel.style.transition="none";
       carousel.style.cursor = "grabbing";
-      setMouseDown(true);
-      setInitialX(e.clientX - carousel.offsetLeft);
+      isMouseDown = true;
+      initialX = e.clientX - carousel.offsetLeft;
     }
     function mouseEnter() {
       carousel.style.cursor = "grab";
     }
     function mouseLeave() {
-      setMouseDown(false);
-      setInitialX(0);
+      isMouseDown = false;
+      initialX = 0;
     }
     function mouseUp() {
       carousel.style.cursor = "grab";
-      setMouseDown(false);
-      setInitialX(0);
+      isMouseDown = false;
+      initialX = 0;
     }
     function checkBoundary() {
       const left = parseInt(carousel.style.left, 10);
@@ -70,20 +73,20 @@ export default function Carousel({ data }: {
       checkBoundary();
     }
 
-    carousel.addEventListener('mousedown', mouseDown);
-    carousel.addEventListener('mouseenter', mouseEnter);
-    carousel.addEventListener('mouseleave', mouseLeave);
-    carousel.addEventListener('mouseup', mouseUp);
-    carousel.addEventListener('mousemove', mouseMove);
+    carouselWrapper.addEventListener('mousedown', mouseDown);
+    carouselWrapper.addEventListener('mouseenter', mouseEnter);
+    carouselWrapper.addEventListener('mouseleave', mouseLeave);
+    carouselWrapper.addEventListener('mouseup', mouseUp);
+    carouselWrapper.addEventListener('mousemove', mouseMove);
 
     return () => {
-      carousel.removeEventListener('mousedown', mouseDown);
-      carousel.removeEventListener('mouseenter', mouseEnter);
-      carousel.removeEventListener('mouseleave', mouseLeave);
-      carousel.removeEventListener('mouseup', mouseUp);
-      carousel.removeEventListener('mousemove', mouseMove);
+      carouselWrapper.removeEventListener('mousedown', mouseDown);
+      carouselWrapper.removeEventListener('mouseenter', mouseEnter);
+      carouselWrapper.removeEventListener('mouseleave', mouseLeave);
+      carouselWrapper.removeEventListener('mouseup', mouseUp);
+      carouselWrapper.removeEventListener('mousemove', mouseMove);
     };
-  }, [isMouseDown, initialX]);
+  }, []);
 
   return (
     <Box position="relative">
