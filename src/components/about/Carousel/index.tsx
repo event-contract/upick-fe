@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import checkIsMobile from "~/src/utils/isMobile";
 import Box from "../../core/Box";
 import CarouselItem from "./CarouselItem";
@@ -29,10 +29,6 @@ const InnerSlider = styled(Box)`
 export default function Carousel({ data }: {
   data: Array<{ content: string; name: string; }>
 }) {
-  // const [isMouseDown, setMouseDown] = useState(false);
-  // const [initialX, setInitialX] = useState(0);
-  const [see, seesseee] = useState('');
-
   useEffect(() => {
     let carouselWrapper: any = document.querySelector('.carousel_wrapper');
     let carousel: any = document.querySelector('.carousel');
@@ -90,7 +86,6 @@ export default function Carousel({ data }: {
 
   return (
     <Box position="relative">
-      <p>{see}</p>
       <CarouselWrapper className="carousel_wrapper">
         <InnerSlider className="carousel">
           {data.map((a, idx) => (
