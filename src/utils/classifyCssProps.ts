@@ -15,7 +15,8 @@ const cssProperties = Object.values(Styles).map(
   // Styles에 없는 css 목록
   'boxSizing',
   'userSelect',
-  'transform'
+  'transform',
+  'transition',
 );
 
 export default function classifyCssProps(props: any) {

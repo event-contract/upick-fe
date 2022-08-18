@@ -7,6 +7,7 @@ import InformationCard1 from '../components/about/InformationCard1';
 import Box from '../components/core/Box';
 import InformationCard2 from '../components/about/InformationCard2';
 import Carousel from '../components/about/Carousel';
+import useAboutPageScroll from '../hooks/useAboutPageScroll';
 
 const PageLayout = styled.div`
   padding: 0;
@@ -18,7 +19,8 @@ const PageLayout = styled.div`
   box-sizing: border-box;
 `;
 
-const MainPage = () => {
+const AboutPage = () => {
+  useAboutPageScroll();
   return (
     <>
       <Head>
@@ -137,4 +139,4 @@ const MainPage = () => {
   );
 };
 
-export default MainPage;
+export default AboutPage;

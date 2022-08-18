@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { colors } from "~/src/configs/colors";
 import Box from "../core/Box";
 import Text from "../core/Text";
@@ -36,9 +36,6 @@ export default function Container({
   titleAlign='left',
   colorSet='normal'
 }: Props) {
-  useEffect(() => {
-
-  }, [])
   return (
     <Box
       className="content_container"
@@ -48,19 +45,21 @@ export default function Container({
       color={getColors(colorSet).text}
       boxSizing="border-box"
     >
-      <Text 
-        as="h2" 
-        margin="0 auto"
-        padding="0 8.75rem"
-        maxWidth="1200px"
-        fontSize="46px" 
-        lineHeight="1.7" 
-        textAlign={titleAlign}
-        dangerouslySetInnerHTML={{
-          __html: title.replace(/\n/g, '<br/>')
-        }}
-      />
-      {children}
+      <Box className="contents_wrapper" opacity="0" transform="translateY(100px)">
+        <Text 
+          as="h2" 
+          margin="0 auto"
+          padding="0 8.75rem"
+          maxWidth="1200px"
+          fontSize="46px" 
+          lineHeight="1.7" 
+          textAlign={titleAlign}
+          dangerouslySetInnerHTML={{
+            __html: title.replace(/\n/g, '<br/>')
+          }}
+        />
+        {children}
+      </Box>
     </Box>
   )
 };
