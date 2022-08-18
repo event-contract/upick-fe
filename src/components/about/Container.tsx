@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { colors } from "~/src/configs/colors";
 import Box from "../core/Box";
 import Text from "../core/Text";
@@ -36,8 +36,12 @@ export default function Container({
   titleAlign='left',
   colorSet='normal'
 }: Props) {
+  useEffect(() => {
+
+  }, [])
   return (
     <Box
+      className="content_container"
       padding="8.75rem 0"
       width="100%"
       background={getColors(colorSet).background}

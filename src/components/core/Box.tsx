@@ -5,12 +5,14 @@ import classifyCssProps from '~/src/utils/classifyCssProps';
 interface propTypes {
   as: string,
   children: React.ReactNode,
+  className?: string,
   [key: string]: any
 };
 
 const Box = forwardRef(({
   as,
   children,
+  className,
   ...props
 }: propTypes, ref) => {
   const { cssProps, normalProps } = classifyCssProps(props);
@@ -18,7 +20,7 @@ const Box = forwardRef(({
   return React.createElement(
     as,
     {
-      className: css(cssProps),
+      className: `${css(cssProps)}${className ? ` ${className}` : ""}`,
       ref,
       ...normalProps
     },
